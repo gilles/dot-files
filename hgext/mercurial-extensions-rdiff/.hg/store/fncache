@@ -1,0 +1,4 @@
+data/.hgignore.i
+data/test-rdiff.out.i
+data/rdiff.py.i
+data/test-rdiff.i

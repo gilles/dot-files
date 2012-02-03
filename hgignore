@@ -1,0 +1,10 @@
+syntax: glob
+.hgrc
+*.pyc
+*.orig
+*.rej
+*.swp
+
+syntax: regexp
+^.idea/.*
+

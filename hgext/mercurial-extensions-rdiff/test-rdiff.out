@@ -1,0 +1,70 @@
+adding foo
+updating to branch default
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+% working directory diff
+comparing with ../base
+searching for changes
+diff --git a/foo b/foo
+--- a/foo
++++ b/foo
+@@ -1,1 +1,2 @@
+ foo
++bar
+comparing with ../base
+searching for changes
+diff --git a/foo b/foo
+--- a/foo
++++ b/foo
+@@ -1,2 +1,1 @@
+ foo
+-bar
+comparing with ../b1
+searching for changes
+diff --git a/foo b/foo
+--- a/foo
++++ b/foo
+@@ -1,1 +1,2 @@
+ foo
++bar
+comparing with ../b1
+searching for changes
+diff --git a/foo b/foo
+--- a/foo
++++ b/foo
+@@ -1,2 +1,1 @@
+ foo
+-bar
+% remote revision
+comparing with ../b1
+searching for changes
+diff --git a/foo b/foo
+--- a/foo
++++ b/foo
+@@ -1,1 +1,2 @@
+ foo
++bar
+adding d1/foo
+% cross-branch diff
+comparing with ../b1
+searching for changes
+diff --git a/d1/foo b/d1/foo
+deleted file mode 100644
+--- a/d1/foo
++++ /dev/null
+@@ -1,1 +0,0 @@
+-foo
+diff --git a/foo b/foo
+--- a/foo
++++ b/foo
+@@ -1,1 +1,2 @@
+ foo
++bar
+% pattern matching
+comparing with ../b1
+searching for changes
+diff --git a/d1/foo b/d1/foo
+deleted file mode 100644
+--- a/d1/foo
++++ /dev/null
+@@ -1,1 +0,0 @@
+-foo

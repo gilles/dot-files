@@ -1,0 +1,24 @@
+[ui]
+username = Gilles <gilles@formspring.com>
+ignore.other = ~/.hgignore
+
+[extensions]
+color =
+fetch =
+mq =
+prompt = ~/.hgext/hg-prompt/prompt.py
+progress =
+graphlog =
+hgshelve = ~/.hgext/hgshelve/hgshelve.py
+rdiff = ~/.hgext/rdiff/rdiff.py
+rebase =
+
+[alias]
+slog = log --style=~/.hgext/mercurial-cli-templates/map-cmdline.slog
+dlog = log --style=~/.hgext/mercurial-cli-templates/map-cmdline.dlog
+nlog = log --style=~/.hgext/mercurial-cli-templates/map-cmdline.nlog
+sglog = log --style=~/.hgext/mercurial-cli-templates/map-cmdline.sglog
+qr = !$HG qrefresh && $HG commit --mq -m "$1"
+
+%include ~/.hgrc.local
+
