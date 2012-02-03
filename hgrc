@@ -10,7 +10,7 @@ prompt = ~/.hgext/hg-prompt/prompt.py
 progress =
 graphlog =
 hgshelve = ~/.hgext/hgshelve/hgshelve.py
-rdiff = ~/.hgext/rdiff/rdiff.py
+rdiff = ~/.hgext/mercurial-extensions-rdiff/rdiff.py
 rebase =
 
 [alias]
