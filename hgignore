@@ -4,6 +4,7 @@ syntax: glob
 *.orig
 *.rej
 *.swp
+.rake_tasks~
 
 syntax: regexp
 ^.idea/.*
