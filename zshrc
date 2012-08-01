@@ -29,14 +29,15 @@ ZSH_THEME="gilles"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby rvm python macports osx knife rake virtualenv)
+plugins=(git ruby rvm bundler python macports osx knife rake virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export PATH=/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/X11/bin
+export PATH=.:~/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-source $HOME/.zshrc.local
+[[ -s "$HOME/.zshrc.local" ]] && . "$HOME/.zshrc.local"
 
