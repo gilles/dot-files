@@ -1,5 +1,6 @@
 ### JetBrain ###
 .idea/
+.idea/*
 .idea/**/*
 
 ### Ruby ###
