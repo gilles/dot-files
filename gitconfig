@@ -1,25 +1,33 @@
 [user]
-	name = Gilles Devaux
-	email = gilles.devaux@gmail.com
+    name = Gilles Devaux
+    email = gilles.devaux@gmail.com
 [color]
     branch = auto
     diff = auto
     interactive = auto
     status = auto
+    status = auto
+[column]
+    ui = auto
+[log]
+    decorate = true
 [core]
-	excludesfile = /Users/gillesdevaux/.gitignore
+    excludesfile = /Users/gillesdevaux/.gitignore_global
     whitespace = fix,space-before-tab,tab-in-indent,trailing-space
     autocrlf = input
+    editor = subl -w
 [branch]
     autosetupmerge = true
     autosetuprebase = always
 [push]
   default = tracking
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [apply]
     whitespace = fix
+[credential]
+    helper = osxkeychain
