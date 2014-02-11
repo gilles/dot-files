@@ -1,5 +1,5 @@
 
-export PATH=.:~/bin:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=.:~/bin:$PATH
 
 export RUBYOPT=rubygems
 
@@ -14,8 +14,8 @@ __hg_ps1() {
   hg prompt " ({[+{incoming|count}]-->}{patch}|{branch}{-->[+{outgoing|count}]}{status})" 2> /dev/null
 }
 
-if [ -e /opt/local/etc/bash_completion ]; then
-  source /opt/local/etc/bash_completion
+if [ -e /usr/local/etc/bash_completion ]; then
+  source /usr/local/etc/bash_completion
   source ~/.bash/completions
 fi
 
