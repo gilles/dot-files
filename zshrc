@@ -36,14 +36,13 @@ source $ZSH/oh-my-zsh.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/share/npm/bin/
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/share/npm/bin
 export WORKON_HOME=~/.virtualenvs/
 export EDITOR='subl'
+export CFLAGS=-Qunused-arguments
+export CPPFLAGS=-Qunused-arguments
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 [[ -s "$HOME/.zshrc.local" ]] && . "$HOME/.zshrc.local"
 
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
