@@ -7,3 +7,4 @@ alias h='history'
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

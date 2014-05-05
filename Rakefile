@@ -2,7 +2,7 @@
 EXCLUDED = ['Rakefile']
 
 SCRIPT_PATH = File.expand_path(__FILE__)
-DOTFILES_PATH = File.dirname(SCRIPT_PATH.first)
+DOTFILES_PATH = File.dirname(SCRIPT_PATH)
 
 desc 'Symlink dot files.'
 task :symlink do

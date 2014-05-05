@@ -29,16 +29,16 @@ ZSH_THEME="gilles"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby rvm bundler python brew osx knife rake virtualenvwrapper)
+plugins=(git ruby rvm bundler python brew osx rake virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/share/npm/bin
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.rvm/bin
 export WORKON_HOME=~/.virtualenvs/
-export EDITOR='subl'
+export EDITOR='vim'
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
