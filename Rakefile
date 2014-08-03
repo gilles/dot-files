@@ -1,5 +1,5 @@
 
-EXCLUDED = ['Rakefile']
+EXCLUDED = ['Rakefile', 'Brewfile', 'Caskfile']
 
 SCRIPT_PATH = File.expand_path(__FILE__)
 DOTFILES_PATH = File.dirname(SCRIPT_PATH)
