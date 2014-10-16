@@ -1,5 +1,5 @@
 
-EXCLUDED = ['Rakefile', 'Brewfile', 'Caskfile']
+EXCLUDED = ['Rakefile', 'Brewfile', 'Caskfile', 'prezto-custom']
 
 SCRIPT_PATH = File.expand_path(__FILE__)
 DOTFILES_PATH = File.dirname(SCRIPT_PATH)
@@ -19,13 +19,21 @@ end
 desc 'Init submodules.'
 task :init do
   if File.exists? '.gitmodules'
-    `git submodule init && git submodule update`
+    `git submodule update --init --recursive`
   end
+end
+
+desc 'Custom Prezto'
+task :custom_prezto do
+  File.symlink(
+    File.join(DOTFILES_PATH, 'prezto-custom', 'prompt_gilles_setup'),
+    File.join(ENV['HOME'], ".zprezto", "modules", "prompt", "functions", "prompt_gilles_setup")
+  )
 end
 
 
 desc 'Install dot files.'
-task :install => [:init, :symlink] do
+task :install => [:init, :symlink, :custom_prezto] do
 end
 
 task :default => [:install]

@@ -1,6 +1,6 @@
 [user]
     name = Gilles Devaux
-    email = gilles.devaux@gmail.com
+    email = gilles@spotify.com
 [color]
     branch = auto
     diff = auto
@@ -12,22 +12,24 @@
 [log]
     decorate = true
 [core]
-    excludesfile = /Users/gillesdevaux/.gitignore
+    excludesfile = /Users/gilles/.gitignore
     whitespace = fix,space-before-tab,tab-in-indent,trailing-space
     autocrlf = input
-    editor = subl -w
+    editor = vim
 [branch]
     autosetupmerge = true
     autosetuprebase = always
 [push]
   default = tracking
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [apply]
     whitespace = fix
 [credential]
     helper = osxkeychain
+[init]
+	templatedir = ~/.git_template
+[help]
+	autocorrect = 1
+[hub]
+	host = ghe.spotify.net
+[github "ghe.spotify.net"]
+	user = gilles
