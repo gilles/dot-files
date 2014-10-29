@@ -1,6 +1,6 @@
 [user]
     name = Gilles Devaux
-    email = gilles@spotify.com
+    email = gilles.devayx@gmail.com
 [color]
     branch = auto
     diff = auto
@@ -26,10 +26,6 @@
 [credential]
     helper = osxkeychain
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
 [help]
-	autocorrect = 1
-[hub]
-	host = ghe.spotify.net
-[github "ghe.spotify.net"]
-	user = gilles
+	  autocorrect = 1
