@@ -38,6 +38,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'python' \
   'ruby' \
+  'rsync' \
   'tmux' \
   'utility' \
   'syntax-highlighting' \
