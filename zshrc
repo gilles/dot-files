@@ -16,6 +16,10 @@ export EDITOR='vim'
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
+json() {
+  python -m json.tool | pygmentize -l json
+}
+
 if [[ -s "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
 fi
