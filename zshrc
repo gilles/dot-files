@@ -20,6 +20,8 @@ json() {
   python -m json.tool | pygmentize -l json
 }
 
+setopt no_share_history
+
 if [[ -s "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
 fi
