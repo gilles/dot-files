@@ -15,9 +15,10 @@ export WORKON_HOME=~/.virtualenvs/
 export EDITOR='vim'
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
+export MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 
 json() {
-  python -m json.tool | pygmentize -l json
+  jq '.'
 }
 
 setopt no_share_history
