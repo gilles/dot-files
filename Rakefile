@@ -29,10 +29,10 @@ task :init_prezto do
     File.join(DOTFILES_PATH, 'prezto-custom', 'prompt_gilles_setup'),
     File.join(ENV['HOME'], ".zprezto", "modules", "prompt", "functions", "prompt_gilles_setup")
   )
-  Dir["./zprezto/runcoms/*"].each do |source|
-    if source != "README.md"
+  Dir[File.join(ENV['HOME'], '.zprezto', 'runcoms', '*')].each do |source|
+    if source != "README.md" && source != 'zprestorc'
       File.symlink(
-        File.join(DOTFILES_PATH, 'prezto', 'runcoms', source),
+        File.join(ENV['HOME'], '.zprezto', 'runcoms', source),
         File.join(ENV['HOME'], ".#{source}")
       )
     end
