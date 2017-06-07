@@ -20,12 +20,15 @@
     autosetupmerge = true
     autosetuprebase = always
 [push]
-  default = tracking
+    default = upstream
+    followTags = true
 [apply]
     whitespace = fix
 [credential]
     helper = osxkeychain
-[init]
-    templatedir = ~/.git_template
 [help]
     autocorrect = 1
+[hub]
+    host = ghe.spotify.net
+[pull]
+    rebase = true
