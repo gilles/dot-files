@@ -25,18 +25,21 @@ end
 
 desc 'Init Prezto'
 task :init_prezto do
-  File.symlink(
-    File.join(DOTFILES_PATH, 'prezto-custom', 'prompt_gilles_setup'),
-    File.join(ENV['HOME'], ".zprezto", "modules", "prompt", "functions", "prompt_gilles_setup")
-  )
+
+  link = File.join(ENV['HOME'], ".zprezto", "modules", "prompt", "functions", "prompt_gilles_setup")
+  if not File.exists?(link)
+    File.symlink(File.join(DOTFILES_PATH, 'prezto-custom', 'prompt_gilles_setup'), link)
+  end
+
   Dir[File.join(ENV['HOME'], '.zprezto', 'runcoms', '*')].each do |source|
+    base = File.basename(source)
+    link = File.join(ENV['HOME'], ".#{base}")
+    next if File.exists?(link)
     if source != "README.md" && source != 'zprestorc'
-      File.symlink(
-        File.join(ENV['HOME'], '.zprezto', 'runcoms', source),
-        File.join(ENV['HOME'], ".#{source}")
-      )
+      File.symlink(source, link)
     end
   end
+
 end
 
 
