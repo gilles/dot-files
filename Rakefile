@@ -30,7 +30,7 @@ task :init_prezto do
     base = File.basename(source)
     link = File.join(ENV['HOME'], ".#{base}")
     next if File.exists?(link)
-    if source != "README.md" && source != 'zprestorc'
+    if source != "README.md"
       File.symlink(source, link)
     end
   end
