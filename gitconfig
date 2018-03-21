@@ -1,6 +1,6 @@
 [user]
     name = Gilles Devaux
-    email = gilles.devaux@gmail.com
+    email = gilles@spotify.com
 [color]
     branch = auto
     diff = auto
@@ -12,7 +12,7 @@
 [log]
     decorate = true
 [core]
-    excludesfile = /Users/gilles/.gitignore
+    excludesfile = /home/gilles/.gitignore
     whitespace = fix,space-before-tab,tab-in-indent,trailing-space
     autocrlf = input
     editor = vim
@@ -30,5 +30,6 @@
     autocorrect = 1
 [hub]
     host = ghe.spotify.net
+	host = ghe.spotify.net
 [pull]
     rebase = true

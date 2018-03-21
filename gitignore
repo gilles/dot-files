@@ -90,3 +90,5 @@ Icon
 # My stuff #
 nogit
 *.watchr
+*-user.conf
+.java-version
