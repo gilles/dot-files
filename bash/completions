@@ -1,3 +1,0 @@
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-complete -C ~/.bash/completions.d/rake_completion -o default rake
-complete -C ~/.bash/completions.d/capistrano_completion -o default cap

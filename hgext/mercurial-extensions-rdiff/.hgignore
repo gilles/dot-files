@@ -1,5 +1,0 @@
-syntax: glob
-*.err
-*.orig
-*.pyc
-*.rej

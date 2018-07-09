@@ -1,5 +1,5 @@
 #
-# A simple theme that displays relevant, contextual information.
+# Sorin prompt with some changes from me
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
@@ -11,23 +11,11 @@
 # Load dependencies.
 pmodload 'helper'
 
-# function prompt_sorin_pwd {
-#   local pwd="${PWD/#$HOME/~}"
-#
-#   if [[ "$pwd" == (#m)[/~] ]]; then
-#     _prompt_sorin_pwd="$MATCH"
-#     unset MATCH
-#   else
-#     _prompt_sorin_pwd="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
-#   fi
-# }
-
 function prompt_sorin_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
   # Format PWD.
-  # prompt_sorin_pwd
 
   # Get Git repository information.
   if (( $+functions[git-info] )); then
@@ -96,7 +84,6 @@ function prompt_sorin_setup {
   # Set node-info parameters
   zstyle ':prezto:module:node:info:version' format '%F{blue}node:%v%f'
 
-  # Define prompts.
   # Define prompts.
   PROMPT='
 %F{113}%n%f %F{cyan}%~%f ${ruby_info[version]} ${node_info[version]} ${python_info[virtualenv]}
