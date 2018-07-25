@@ -1,11 +1,10 @@
 
-EXCLUDED = ['Rakefile', 'Brewfile', 'Caskfile', 'zsh']
-
 SCRIPT_PATH = File.expand_path(__FILE__)
 DOTFILES_PATH = File.dirname(SCRIPT_PATH)
 
-desc 'Symlink dot files.'
+desc 'Symlink home files'
 task :symlink do
+  EXCLUDED = ['Rakefile', 'zsh', 'nvim']
   Dir["./*"].each do |source|
     base = File.basename(source)
     link = File.join(ENV['HOME'], ".#{base}")
@@ -16,8 +15,15 @@ task :symlink do
   end
 end
 
+dec 'Setup neovim'
+task :neovim do
+  system 'mkdir', '-p', '~/.config'
+  link = File.join(ENV['HOME'], ".config", "nvim")
+  File.symlink(File.join(DOTFILES_PATH, 'nvim'), link)
+end
+
 desc 'Install dot files.'
-task :install => [:symlink] do
+task :install => [:symlink, :neovim] do
 end
 
 task :default => [:install]

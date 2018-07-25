@@ -2,10 +2,10 @@ source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:2
 zplug "modules/environment", from:prezto
 zplug "modules/terminal", from:prezto
 zplug "modules/editor", from:prezto
@@ -13,14 +13,15 @@ zplug "modules/history", from:prezto
 zplug "modules/directory", from:prezto
 zplug "modules/spectrum", from:prezto
 zplug "modules/utility", from:prezto
-zplug "modules/completion", from:prezto
 zplug "modules/git", from:prezto
 zplug "modules/ruby", from:prezto
 zplug "modules/python", from:prezto
 zplug "modules/tmux", from:prezto
 zplug "modules/ssh", from:prezto
-zplug "~/.dot-files/zsh/", from:local, as:theme 
+zplug "~/.dot-files/zsh/", from:local, as:plugin
+zplug "~/.dot-files/zsh/", from:local, as:theme
 
+# prezto config
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:editor' key-bindings 'vi'
@@ -48,6 +49,9 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 if [[ -s "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local"
 fi
+
