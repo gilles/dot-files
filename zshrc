@@ -16,11 +16,13 @@ zplug "modules/utility", from:prezto
 zplug "modules/git", from:prezto
 zplug "modules/ruby", from:prezto
 zplug "modules/python", from:prezto
+zplug "modules/node", from:prezto
 zplug "lukechilds/zsh-nvm"
+zplug "kiurchv/asdf.plugin.zsh"
 zplug "modules/tmux", from:prezto
 zplug "modules/ssh", from:prezto
-zplug "~/.dot-files/zsh/", from:local, as:plugin
-zplug "~/.dot-files/zsh/", from:local, as:theme
+zplug "~/.dot-files/zsh", from:local, as:plugin
+zplug "~/.dot-files/zsh", from:local, as:theme
 
 # prezto config
 zstyle ':prezto:*:*' color 'yes'

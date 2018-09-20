@@ -17,6 +17,11 @@ function prompt_sorin_precmd {
 
   # Format PWD.
 
+  # Get jenv information.
+  if (( $+functions[java-info] )); then
+    java-info
+  fi
+
   # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
@@ -84,9 +89,12 @@ function prompt_sorin_setup {
   # Set node-info parameters
   zstyle ':prezto:module:node:info:version' format '%F{blue}node:%v%f'
 
+  # Set java-info parameters.
+  zstyle ':gilles:java:info:version' format '%F{blue}java:%v%f'
+
   # Define prompts.
   PROMPT='
-%F{113}%n%f %F{cyan}%~%f ${ruby_info[version]} ${node_info[version]} ${python_info[virtualenv]}
+%F{113}%n%f %F{cyan}%~%f ${java_info[version]} ${ruby_info[version]} ${node_info[version]} ${python_info[virtualenv]}
 %(!.%B%F{red}#%f%b.)${editor_info[keymap]} '
   RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${git_info:+${(e)git_info[prompt]}}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '

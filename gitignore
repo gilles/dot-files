@@ -2,6 +2,14 @@
 .idea/
 *.iml
 
+### Eclipse ###
+.settings/
+.classpath
+.project
+
+### VSCode ###
+.vscode/
+
 ### Ruby ###
 *.gem
 *.rbc
@@ -20,7 +28,6 @@ tmp
 # YARD artifacts
 .yardoc
 _yardoc
-#doc/
 
 ### Ruby Tools ###
 *.rbc
@@ -46,6 +53,9 @@ pickle-email-*.html
 ###Python###
 .venv
 *.py[co]
+
+### node ###
+node_modules/
 
 # Packages
 *.egg
@@ -88,7 +98,7 @@ Icon
 .Trashes
 
 # My stuff #
-nogit
 *.watchr
 *-user.conf
 .java-version
+.adr-dir
