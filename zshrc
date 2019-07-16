@@ -16,8 +16,8 @@ zplug "modules/utility", from:prezto
 zplug "modules/git", from:prezto
 zplug "modules/ruby", from:prezto
 zplug "modules/python", from:prezto
-zplug "modules/node", from:prezto
 zplug "lukechilds/zsh-nvm"
+zplug "lukechilds/zsh-better-npm-completion", defer:2
 zplug "kiurchv/asdf.plugin.zsh"
 zplug "modules/tmux", from:prezto
 zplug "modules/ssh", from:prezto
@@ -41,13 +41,25 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
    'line' \
    'root'
 
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+__git_files () { 
+    _wanted files expl 'local files' _files     
+}
+
+# some other config
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
+
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
 
 # Then, source plugins and add commands to $PATH
 zplug load

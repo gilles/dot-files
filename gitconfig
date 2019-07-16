@@ -24,8 +24,6 @@
     followTags = true
 [apply]
     whitespace = fix
-[credential]
-    helper = osxkeychain
 [help]
     autocorrect = 1
 [hub]
