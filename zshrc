@@ -23,6 +23,7 @@ zplug "modules/tmux", from:prezto
 zplug "modules/ssh", from:prezto
 zplug "~/.dot-files/zsh", from:local, as:plugin
 zplug "~/.dot-files/zsh", from:local, as:theme
+zplug "~/.dot-files/zsh/k8s", from:local, as:plugin
 
 # prezto config
 zstyle ':prezto:*:*' color 'yes'
