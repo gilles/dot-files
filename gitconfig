@@ -18,7 +18,7 @@
     editor = vim
 [branch]
     autosetupmerge = true
-    autosetuprebase = always
+    autosetuprebase = local
 [push]
     default = upstream
     followTags = true
@@ -28,5 +28,3 @@
     autocorrect = 1
 [hub]
     host = ghe.spotify.net
-[pull]
-    rebase = true
