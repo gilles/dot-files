@@ -21,9 +21,10 @@ zplug "lukechilds/zsh-better-npm-completion", defer:2
 zplug "kiurchv/asdf.plugin.zsh"
 zplug "modules/tmux", from:prezto
 zplug "modules/ssh", from:prezto
-zplug "~/.zsh", from:local, as:plugin
-zplug "~/.zsh", from:local, as:theme
-zplug "~/.zsh/k8s", from:local, as:plugin
+zplug "~/.zsh/plugins", from:local, as:plugin
+zplug "~/.zsh/plugins/k8s", from:local, as:plugin
+zplug "~/.zsh/themes", from:local, as:theme
+
 
 # prezto config
 zstyle ':prezto:*:*' color 'yes'
@@ -41,10 +42,6 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
    'pattern' \
    'line' \
    'root'
-
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
 
 __git_files () { 
     _wanted files expl 'local files' _files     
@@ -65,7 +62,11 @@ export NVM_AUTO_USE=true
 # Then, source plugins and add commands to $PATH
 zplug load
 
+#for some reason these don't work
+# plugin .zsh/plugins/fzf.zsh is not loaded
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# plugin is loaded, path are added but completion don't work
+source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 if [[ -s "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local"

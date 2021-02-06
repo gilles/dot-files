@@ -4,7 +4,7 @@ if (( $+commands[kubectl] )); then
 fi
 
 # kube context switcher (copied locally, find a way to keep up to date)
-if [[ -d "$HOME/.dot-files/zsh/k8s" ]]; then
-  export PATH="$PATH:$HOME/.dot-files/zsh/k8s/bin"
-  fpath=($HOME/.dot-files/zsh/k8s/completions $fpath)
+if [[ -d "$HOME/.zsh/plugins/k8s" ]]; then
+  export PATH="$PATH:$HOME/.zsh/plugins/k8s/bin"
+  fpath=($HOME/.zsh/plugins/k8s/completions $fpath)
 fi

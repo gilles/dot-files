@@ -20,7 +20,6 @@ function java-info {
     
     # Grab the styling we might have to do
     zstyle -s ':gilles:java:info:version' format 'version_format'
-    
     if [[ -n "$version_format" ]]; then
 
         #only jenv, do nothing if system

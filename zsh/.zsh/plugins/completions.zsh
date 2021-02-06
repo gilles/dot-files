@@ -40,6 +40,9 @@ else
 fi
 unset _comp_files
 
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 #
 # Styles
 #
