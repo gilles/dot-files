@@ -119,3 +119,10 @@ jenv enable-plugin export
 chsh -s $(which zsh)
 
 # logout and relogin to pick up changes
+# extensions
+# don't now how to enable them automatically but probably through 
+# `gnome-extensions` https://wiki.gnome.org/Projects/GnomeShell/Extensions
+# https://extensions.gnome.org/extension/779/clipboard-indicator/
+# https://extensions.gnome.org/extension/906/sound-output-device-chooser/
+# https://extensions.gnome.org/extension/120/system-monitor/
+# https://extensions.gnome.org/extension/19/user-themes/
