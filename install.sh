@@ -33,7 +33,8 @@ apt_packages=(
     tmux
     telnet
     python3-venv
-    pipx
+    virtualenvwrapper
+    python-is-python3
     maven
     gir1.2-gtop-2.0 
     gir1.2-nm-1.0 
@@ -76,9 +77,9 @@ sudo apt update
 sudo apt install -y java-11-amazon-corretto-jdk
 
 #jenv
-git clone https://github.com/jenv/jenv.git ~/.jenv
-#virtualenv
-pipx install virtualenv
+#git clone https://github.com/jenv/jenv.git ~/.jenv
+#sdkman
+curl -s "https://get.sdkman.io" | bash
 # nvm, no "latest"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
@@ -110,14 +111,23 @@ zsh -c 'zplug install'
 vim +PluginInstall +all
 tmux run-shell "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
 
-jenv add /usr/lib/jvm/java-11-amazon-coretto/
-jenv global 11
-jenv enable-plugin maven
-jenv enable-plugin export
+#jenv add /usr/lib/jvm/java-11-amazon-coretto/
+#jenv global 11
+#jenv enable-plugin maven
+#jenv enable-plugin export
+sed -i 's/sdkman_auto_answer=false/sdkman_auto_answer=true/' $HOME/.sdkman/etc/config
+sed -i 's/sdkman_auto_env=false/sdkman_auto_env=true/' $HOME/.sdkman/etc/config
+sdk install java 8.282.08.1-amzn
+sdk install java 11.0.10.9.1-amzn
+sdk install maven
+sdk install mvnd
+sdk default java 11.0.10.9.1-amzn
+
 
 # set zsh as the default
 chsh -s $(which zsh)
 
+# remove sdkman autoinit (it's in the plugin)
 # logout and relogin to pick up changes
 # extensions
 # don't now how to enable them automatically but probably through 
