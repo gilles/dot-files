@@ -11,20 +11,15 @@
 # Load dependencies.
 pmodload 'helper'
 
-function prompt_sorin_precmd {
+# this means the prompt is not changing when you update the environment
+# just when you enter an already configured one. I'm fine with that
+function prompt_prepwd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
-  # Format PWD.
-
-  # Get jenv information.
+  # Get Java information.
   if (( $+functions[java-info] )); then
     java-info
-  fi
-
-  # Get Git repository information.
-  if (( $+functions[git-info] )); then
-    git-info
   fi
 
   # Get Ruby info
@@ -43,7 +38,17 @@ function prompt_sorin_precmd {
   fi
 }
 
-function prompt_sorin_setup {
+function prompt_precmd {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+}
+
+function prompt_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
   prompt_opts=(cr percent subst)
@@ -52,14 +57,15 @@ function prompt_sorin_setup {
   autoload -Uz add-zsh-hook
 
   # Add hook for calling git-info before each command.
-  add-zsh-hook precmd prompt_sorin_precmd
+  add-zsh-hook precmd prompt_precmd
+  # Add hook for calling environment info when changing directory.
+  add-zsh-hook chpwd prompt_prepwd
 
   # Tell prezto we can manage this prompt
   zstyle ':prezto:module:prompt' managed 'yes'
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
-  # zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{red}$%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%F{red}♺%f'
   zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
@@ -103,4 +109,4 @@ function prompt_sorin_setup {
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
-prompt_sorin_setup "$@"
+prompt_setup "$@"
