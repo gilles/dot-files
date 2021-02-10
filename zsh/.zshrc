@@ -18,7 +18,8 @@ zplug "modules/ruby", from:prezto
 zplug "modules/python", from:prezto
 zplug "lukechilds/zsh-nvm"
 zplug "lukechilds/zsh-better-npm-completion", defer:2
-zplug "kiurchv/asdf.plugin.zsh"
+zplug "matthieusb/zsh-sdkman"
+# zplug "kiurchv/asdf.plugin.zsh"
 zplug "modules/tmux", from:prezto
 zplug "modules/ssh", from:prezto
 zplug "~/.zsh/plugins", from:local, as:plugin
@@ -63,12 +64,9 @@ export NVM_AUTO_USE=true
 zplug load
 
 #for some reason these don't work
-# plugin .zsh/plugins/fzf.zsh is not loaded
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # plugin is loaded, path are added but completion don't work
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 if [[ -s "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local"
 fi
-
