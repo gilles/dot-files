@@ -11,9 +11,7 @@
 # Load dependencies.
 pmodload 'helper'
 
-# this means the prompt is not changing when you update the environment
-# just when you enter an already configured one. I'm fine with that
-function prompt_prepwd {
+function prompt_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
@@ -36,11 +34,6 @@ function prompt_prepwd {
   if (( $+functions[node-info] )); then
     node-info
   fi
-}
-
-function prompt_precmd {
-  setopt LOCAL_OPTIONS
-  unsetopt XTRACE KSH_ARRAYS
 
   # Get Git repository information.
   if (( $+functions[git-info] )); then
@@ -59,7 +52,7 @@ function prompt_setup {
   # Add hook for calling git-info before each command.
   add-zsh-hook precmd prompt_precmd
   # Add hook for calling environment info when changing directory.
-  add-zsh-hook chpwd prompt_prepwd
+  # add-zsh-hook chpwd prompt_prepwd
 
   # Tell prezto we can manage this prompt
   zstyle ':prezto:module:prompt' managed 'yes'
