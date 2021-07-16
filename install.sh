@@ -17,6 +17,11 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys play '<Alt><Super>Hom
 # packages
 # sudo apt update
 apt_packages=(
+    make
+    libreadline-dev
+    bison
+    flex
+    htop
     gnome-tweaks
     gnome-shell-extensions
     chrome-gnome-shell 
@@ -40,6 +45,8 @@ apt_packages=(
     gir1.2-nm-1.0 
     gir1.2-clutter-1.0
     fzf
+    jq
+    flameshot
     stow)
 sudo apt install -y ${apt_packages[@]}
 
