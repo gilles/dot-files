@@ -34,11 +34,12 @@ apt_packages=(
     apt-transport-https
     ca-certificates
     gnupg-agent
+    libnss3-tools
     software-properties-common
     tmux
     telnet
-    python3-venv
-    virtualenvwrapper
+    python3
+    python3-dev
     python-is-python3
     maven
     gir1.2-gtop-2.0 
@@ -49,6 +50,9 @@ apt_packages=(
     flameshot
     stow)
 sudo apt install -y ${apt_packages[@]}
+
+# python things because nothing works when installed with apt
+sudo pip install virtualenvwrapper docker-compose
 
 # snaps
 sudo snap install code --classic
@@ -143,3 +147,7 @@ chsh -s $(which zsh)
 # https://extensions.gnome.org/extension/906/sound-output-device-chooser/
 # https://extensions.gnome.org/extension/120/system-monitor/
 # https://extensions.gnome.org/extension/19/user-themes/
+#
+# install krew https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+# krew install ctx
+# krew install ns
