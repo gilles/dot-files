@@ -29,9 +29,8 @@ function java-info {
         fi
 
         if (( $+functions[sdk] )); then
-            version="${${$(sdk current | grep java)##java: }/.*-/-}"
-            # no function to get the default
-            default="11-amzn"
+            version="${${$(sdk current java | grep java)##Using java version }%% .*}"
+            default=$(readlink $HOME/.sdkman/candidates/java/current)
         fi
         
         if [[ -n "$version" && "$version" != "$default" ]]; then
