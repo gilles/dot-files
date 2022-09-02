@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -70,3 +71,5 @@ source "$HOME/google-cloud-sdk/completion.zsh.inc"
 if [[ -s "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
