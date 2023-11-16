@@ -22,9 +22,12 @@
 [push]
     default = upstream
     followTags = true
+	autoSetupRemote = true
 [apply]
     whitespace = fix
 [help]
     autocorrect = 1
+[url "ssh://git@ghe.spotify.net/"]
+	insteadOf = https://ghe.spotify.net/
 [hub]
     host = ghe.spotify.net

@@ -13,9 +13,12 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys next '<Alt><Super>Pag
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute '<Alt><Super>End'
 # this does play/pause
 gsettings set org.gnome.settings-daemon.plugins.media-keys play '<Alt><Super>Home'
+# I use these in tmux
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 
 # packages
-# sudo apt update
+sudo apt update
 apt_packages=(
     make
     libreadline-dev
@@ -49,10 +52,12 @@ apt_packages=(
     jq
     flameshot
     stow)
-sudo apt install -y ${apt_packages[@]}
+sudo apt install -y "${apt_packages[@]}"
 
-# python things because nothing works when installed with apt
-sudo pip install virtualenvwrapper docker-compose
+# pyenv
+curl https://pyenv.run | bash
+pyenv install 3.11
+pyenv global 3.11
 
 # snaps
 sudo snap install code --classic
@@ -72,6 +77,20 @@ curl -o wavebox.deb -J -L https://download.wavebox.app/latest/stable/linux/deb
 sudo apt install ./wavebox.deb
 rm -rf ./wavebox.deb
 
+# 1password
+curl -sS https://downloads.1password.com/linux/keys/1password.asc \
+    | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' \
+    | sudo tee /etc/apt/sources.list.d/1password.list
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol \
+    | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc \
+    | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+sudo apt update
+sudo apt install -y 1password
+
 # docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
@@ -81,11 +100,11 @@ sudo add-apt-repository \
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
-# coretto
-wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
-sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
-sudo apt update 
-sudo apt install -y java-11-amazon-corretto-jdk
+# coretto (managed through sdkman)
+# wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+# sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+# sudo apt update 
+# sudo apt install -y java-11-amazon-corretto-jdk
 
 #jenv
 #git clone https://github.com/jenv/jenv.git ~/.jenv
@@ -96,7 +115,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 # Google cloud SDK
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-326.0.0-linux-x86_64.tar.gz
-tar xzvf google-cloud-sdk-326.0.0-linux-x86_64.tar.gz -C $HOME
+tar xzvf google-cloud-sdk-326.0.0-linux-x86_64.tar.gz -C "$HOME"
 rm -rf google-cloud-sdk-326.0.0-linux-x86_64.tar.gz
 
 #zplug
@@ -106,8 +125,8 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # vim-plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs '\
+      'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # stow config files
 stow zsh
@@ -115,7 +134,7 @@ stow tmux
 stow git
 stow curl
 stow wget
-stow -t $HOME/.config/nvim nvim 
+stow -t "$HOME/.config/nvim nvim"
 
 # init commands, should work (maybe)
 zsh -c 'zplug install'
@@ -126,17 +145,17 @@ tmux run-shell "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
 #jenv global 11
 #jenv enable-plugin maven
 #jenv enable-plugin export
-sed -i 's/sdkman_auto_answer=false/sdkman_auto_answer=true/' $HOME/.sdkman/etc/config
-sed -i 's/sdkman_auto_env=false/sdkman_auto_env=true/' $HOME/.sdkman/etc/config
-sdk install java 8.282.08.1-amzn
-sdk install java 11.0.10.9.1-amzn
-sdk install maven
-sdk install mvnd
-sdk default java 11.0.10.9.1-amzn
+sed -i 's/sdkman_auto_answer=false/sdkman_auto_answer=true/' "$HOME/.sdkman/etc/config"
+sed -i 's/sdkman_auto_env=false/sdkman_auto_env=true/' "$HOME/.sdkman/etc/config"
+# sdk install java 8.282.08.1-amzn
+# sdk install java 11.0.10.9.1-amzn
+# sdk install maven
+# sdk install mvnd
+# sdk default java 11.0.10.9.1-amzn
 
 
 # set zsh as the default
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 # remove sdkman autoinit (it's in the plugin)
 # logout and relogin to pick up changes
@@ -151,3 +170,4 @@ chsh -s $(which zsh)
 # install krew https://krew.sigs.k8s.io/docs/user-guide/setup/install/
 # krew install ctx
 # krew install ns
+#

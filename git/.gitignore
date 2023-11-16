@@ -30,7 +30,6 @@ tmp
 _yardoc
 
 ### Ruby Tools ###
-*.rbc
 *.sassc
 .sass-cache
 capybara-*.html
@@ -101,4 +100,6 @@ Icon
 *.watchr
 *-user.conf
 .java-version
+.sdkmanrc
 .adr-dir
+.python-version
