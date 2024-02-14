@@ -28,8 +28,13 @@ zplug "modules/python", from:prezto
 zplug "lukechilds/zsh-nvm"
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
-# sdkman (will install + completion, autoswitch is managed by sdkman itself)
-zplug "ptavares/zsh-sdkman"
+
+# sdkman completion, autoswitch is managed by sdkman itself
+zplug "plugins/sdk", from:oh-my-zsh
+# annoying that this is not in the plugin
+if [[ -f "${HOME}/.sdkman/bin/sdkman-init.sh" ]]; then
+    source "${HOME}/.sdkman/bin/sdkman-init.sh"
+fi
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
@@ -43,7 +48,6 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 zstyle ':prezto:module:tmux:session' name 'default'
 zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
-zstyle ':prezto:module:python:virtualenv' initialize 'yes'
 zstyle ':prezto:module:ssh:load' identities 'id_rsa'
 
 __git_files () { 
@@ -67,3 +71,4 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh. Interestingly this is not sourced in the plugin
 [[ ! -f ~/.p10k.zsh ]] || source "$HOME/.p10k.zsh"
+
