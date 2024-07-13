@@ -4,6 +4,6 @@ if [[ -d "$HOME/.krew/bin" ]]; then
 fi
 
 # find a better way to do that -> store in /usr/local/share/zsh/site-functions
-if (( $+commands[kubectl-krew] )); then
-  source <(kubectl krew completion zsh)
-fi
+# if (( $+commands[kubectl-krew] )); then
+  # source <(kubectl krew completion zsh)
+# fi
