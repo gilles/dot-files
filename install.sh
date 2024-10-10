@@ -2,15 +2,16 @@
 
 #background
 gsettings set org.gnome.desktop.background picture-uri ''
+gsettings set org.gnome.desktop.background picture-uri-dark ''
 gsettings set org.gnome.desktop.background primary-color '#000000'
 gsettings set org.gnome.desktop.background secondary-color '#5789ca'
 
 #media keys
-gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down '<Alt><Super>Delete'
-gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up '<Alt><Super>Insert'
-gsettings set org.gnome.settings-daemon.plugins.media-keys previous '<<Alt><Super>Page_Up'
-gsettings set org.gnome.settings-daemon.plugins.media-keys next '<Alt><Super>Page_Down'
-gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute '<Alt><Super>End'
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['<Alt><Super>Delete']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['<Alt><Super>Insert']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys previous "['<Alt><Super>Page_Up']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys next "['<Alt><Super>Page_Down']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute "['<Alt><Super>End']"
 # this does play/pause
 gsettings set org.gnome.settings-daemon.plugins.media-keys play '<Alt><Super>Home'
 # I use these in tmux
@@ -21,6 +22,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 sudo apt update
 apt_packages=(
     make
+    build-essentials
     libreadline-dev
     bison
     flex
@@ -56,40 +58,41 @@ sudo apt install -y "${apt_packages[@]}"
 
 # pyenv
 curl https://pyenv.run | bash
-pyenv install 3.11
-pyenv global 3.11
+# pyenv need to be loaded, but that's done on a zsh plugin
+# pyenv install 3.11
+# pyenv global 3.11
 
 # snaps
-sudo snap install code --classic
-sudo snap install intellij-idea-community --classic
-sudo snap install intellij-idea-ultimate --classic
+# sudo snap install code --classic
+# sudo snap install intellij-idea-community --classic
+# sudo snap install intellij-idea-ultimate --classic
 sudo snap install spotify
 sudo snap install zoom-client
-sudo snap install skype --classic
+# sudo snap install skype --classic
 
 # chrome
-curl -o chrome.deb -J -L https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./chrome.deb
-rm -rf ./chrome.deb
+# curl -o chrome.deb -J -L https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# sudo apt install ./chrome.deb
+# rm -rf ./chrome.deb
 
 # wavebox
-curl -o wavebox.deb -J -L https://download.wavebox.app/latest/stable/linux/deb
-sudo apt install ./wavebox.deb
-rm -rf ./wavebox.deb
+# curl -o wavebox.deb -J -L https://download.wavebox.app/latest/stable/linux/deb
+# sudo apt install ./wavebox.deb
+# rm -rf ./wavebox.deb
 
 # 1password
-curl -sS https://downloads.1password.com/linux/keys/1password.asc \
-    | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' \
-    | sudo tee /etc/apt/sources.list.d/1password.list
-sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol \
-    | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
-curl -sS https://downloads.1password.com/linux/keys/1password.asc \
-    | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-sudo apt update
-sudo apt install -y 1password
+# curl -sS https://downloads.1password.com/linux/keys/1password.asc \
+    # | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+# echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' \
+    # | sudo tee /etc/apt/sources.list.d/1password.list
+# sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+# curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol \
+    # | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+# sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+# curl -sS https://downloads.1password.com/linux/keys/1password.asc \
+    # | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+# sudo apt update
+# sudo apt install -y 1password
 
 # docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -117,9 +120,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-326.0.0-linux-x86_64.tar.gz
 tar xzvf google-cloud-sdk-326.0.0-linux-x86_64.tar.gz -C "$HOME"
 rm -rf google-cloud-sdk-326.0.0-linux-x86_64.tar.gz
+# Still need to ./google-cloud-sdk/install.sh
 
 #zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+# curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+# antidote
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
 
 #tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -134,12 +141,13 @@ stow tmux
 stow git
 stow curl
 stow wget
-stow -t "$HOME/.config/nvim nvim"
+stow -t "$HOME"/.config/nvim nvim
+stow powerlevel10k
 
 # init commands, should work (maybe)
-zsh -c 'zplug install'
-vim +PluginInstall +all
-tmux run-shell "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
+vim +PlugInstall +all
+# does not work
+# tmux run-shell "$HOME"/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 #jenv add /usr/lib/jvm/java-11-amazon-coretto/
 #jenv global 11

@@ -1,10 +1,6 @@
 zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-syntax-highlighting kind:defer
 
-getantidote/use-omz
-# I need nothing from lib
-ohmyzsh/ohmyzsh path:plugins/sdk
-
 sorin-ionescu/prezto
 sorin-ionescu/prezto path:modules/environment
 sorin-ionescu/prezto path:modules/editor
@@ -20,6 +16,7 @@ romkatv/powerlevel10k
 
 $HOME/.zsh/plugins/cloudsdk
 $HOME/.zsh/plugins/k8s
+$HOME/.zsh/plugins/brew
 $HOME/.zsh/plugins/fzf
 
 #at the end

@@ -1,6 +1,6 @@
 [user]
-    name = Gilles Devaux
-    email = gilles@spotify.com
+	name = Gilles Devaux
+	email = gilles@spotify.com
 [color]
     branch = auto
     diff = auto

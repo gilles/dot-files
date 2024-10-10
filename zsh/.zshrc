@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # zmodload zsh/zprof
 # source "$HOME/.zplug/init.zsh"
 
@@ -84,6 +91,8 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 zstyle ':prezto:module:tmux:session' name 'default'
 zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 zstyle ':prezto:module:ssh:load' identities 'id_rsa'
+# other config
+export NVM_NO_USE=true
 
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 autoload -Uz promptinit && promptinit
@@ -91,17 +100,8 @@ antidote load
 
 # annoying that this is not in the plugin
 if [[ -f "${HOME}/.sdkman/bin/sdkman-init.sh" ]]; then
-    source "${HOME}/.sdkman/bin/sdkman-init.sh"
+   source "${HOME}/.sdkman/bin/sdkman-init.sh"
 fi
-
-# antidote can't do local things
-#if [[ -d "$HOME/.zsh/plugins" ]]; then
-#    source "$HOME/.zsh/plugins/cloudsdk.zsh"
-    # these are only completion find a faster way
-    # source "$HOME/.zsh/plugins/k8s/k8s.zsh"
-    # source "$HOME/.zsh/plugins/k8s/krew.zsh"
-#    source "$HOME/.zsh/plugins/fzf.zsh"
-#fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh. Interestingly this is not sourced in the plugin
 [[ ! -f ~/.p10k.zsh ]] || source "$HOME/.p10k.zsh"
